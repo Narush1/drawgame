@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Matchmaking Drawing Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="langSwitcher">
+    <button id="btnLangRus" class="lang-btn active">Рус</button>
+    <button id="btnLangEng" class="lang-btn">Eng</button>
+  </div>
+
+  <div id="setup">
+    <h2 data-lang-key="createRoomTitle">Создать комнату</h2>
+
+    <label data-lang-key="roomNameLabel">Название комнаты:</label><br/>
+    <input id="roomName" type="text" placeholder="Например: Комната с тюленями" /><br/>
+
+    <label data-lang-key="difficultyLabel">Сложность слова:</label><br/>
+    <select id="difficulty">
+      <option value="easy" data-lang-key="easy">Лёгкая</option>
+      <option value="medium" data-lang-key="medium" selected>Средняя</option>
+      <option value="hard" data-lang-key="hard">Сложная</option>
+    </select><br/>
+
+    <label><input type="radio" name="roomType" id="radioPublic" checked /> <span data-lang-key="publicRoom">Публичная комната</span></label><br/>
+    <label><input type="radio" name="roomType" id="radioPrivate" /> <span data-lang-key="privateRoom">Приватная комната</span></label><br/>
+
+    <div id="privateCodeWrapper" style="display:none;">
+      <label data-lang-key="privateCodeLabel">Код комнаты (для приватной):</label><br/>
+      <input id="privateCode" type="text" maxlength="6" placeholder="Например: QWRIC" /><br/>
+    </div>
+
+    <button id="btnCreateRoom" data-lang-key="createRoomBtn">Создать комнату</button>
+
+    <hr/>
+
+    <h2 data-lang-key="joinRoomTitle">Войти в комнату</h2>
+
+    <div id="joinPublicWrapper">
+      <h3 data-lang-key="publicRoomsListTitle">Публичные комнаты</h3>
+      <ul id="publicRoomsList"></ul>
+      <button id="btnRefreshPublicRooms" data-lang-key="refreshRoomsBtn">Обновить список</button>
+    </div>
+
+    <div id="joinPrivateWrapper" style="display:none;">
+      <label data-lang-key="joinPrivateCodeLabel">Введите код приватной комнаты:</label><br/>
+      <input id="joinCode" type="text" maxlength="6" placeholder="Введите код" /><br/>
+      <button id="btnJoinRoom" data-lang-key="joinRoomBtn">Войти</button>
+    </div>
+  </div>
+
+  <div id="game" style="display:none;">
+    <div id="roomInfo"></div>
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <div id="tools">
+      <button id="btnPen" class="tool active" data-lang-key="pen">Карандаш</button>
+      <button id="btnEraser" class="tool" data-lang-key="eraser">Ластик</button>
+      <button id="btnClear" data-lang-key="clear">Очистить</button>
+      <button id="btnStartRound" data-lang-key="startRound">Начать раунд</button>
+    </div>
+    <div id="players"></div>
+    <div id="chatWrapper">
+      <ul id="chat"></ul>
+      <input id="chatInput" type="text" placeholder="Введите сообщение..." />
+      <button id="btnSend" data-lang-key="send">Отправить</button>
+    </div>
+  </div>
+
+  <script src="client.js"></script>
+</body>
+</html>
